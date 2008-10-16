@@ -9,7 +9,7 @@ Group:         Development/Perl
 License:       Artistic
 Url:           http://www.cpan.org
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%(id -u -n)
-#BuildArch:     i586
+BuildRequires:	perl-devel
 Source:        http://search.cpan.org/CPAN/authors/id/T/TI/TIMB/%{pkgname}-%{version}.tar.gz
 %description
 # profile code and write database to ./nytprof.out
