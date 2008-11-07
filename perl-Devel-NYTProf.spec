@@ -1,45 +1,58 @@
-%define pkgname    Devel-NYTProf
-%define filelist %{pkgname}-%{version}-filelist
-%define NVR %{pkgname}-%{version}-%{release}
-Summary:       Devel-NYTProf - Powerful feature-rich perl source code profiler
-Name:          perl-Devel-NYTProf
-Version:       2.05
-Release:       %mkrel 1
-Group:         Development/Perl
-License:       Artistic
-Url:           http://www.cpan.org
-BuildRoot:     %{_tmppath}/%{name}-%{version}-%(id -u -n)
+%define module    Devel-NYTProf
+%define version   2.07
+%define release   %mkrel 1
+
+Name:       perl-%{module}
+Version:    %{version}
+Release:    %{release}
+Summary:    Powerful feature-rich perl source code profiler
+Group:      Development/Perl
+License:    Artistic
+Url:        http://search.cpan.org/dist/%{module}
+Source:     http://www.cpan.org/modules/by-module/Devel/%{module}-%{version}.tar.gz
 BuildRequires:	perl-devel
-Source:        http://search.cpan.org/CPAN/authors/id/T/TI/TIMB/%{pkgname}-%{version}.tar.gz
+BuildRoot:     %{_tmppath}/%{name}-%{version}
+
 %description
-# profile code and write database to ./nytprof.out
-perl -d:NYTProf some_perl.pl
-# convert database into a set of html files, e.g., ./nytprof/index.html
-nytprofhtml
-# or into comma seperated files, e.g., ./nytprof/*.csv
-nytprofcsv
+Devel::NYTProf is a powerful feature-rich perl source code profiler.
+
+  * Performs per-line statement profiling for fine detail
+  * Performs per-subroutine statement profiling for overview
+  * Performs per-block statement profiling (the first profiler to do so)
+  * Accounts correctly for time spent after calls return
+  * Performs inclusive and exclusive timing of subroutines
+  * Subroutine times are per calling location (a powerful feature)
+  * Can profile compile-time activity, just run-time, or just END time
+  * Uses novel techniques for efficient profiling
+  * Sub-microsecond (100ns) resolution on systems with clock_gettime()
+  * Very fast - the fastest statement and subroutine profilers for perl
+  * Handles applications that fork, with no performance cost
+  * Immune from noise caused by profiling overheads and I/O
+  * Program being profiled can stop/start the profiler
+  * Generates richly annotated and cross-linked html reports
+  * Trivial to use with mod_perl - add one line to httpd.conf
+  * Includes an extensive test suite
+  * Tested on very large codebases
+
+NYTProf is effectively two profilers in one: a statement profiler, and a
+subroutine profiler.
 
 %prep
-%setup -q -n Devel-NYTProf-2.05 
+%setup -q -n %{module}-%{version} 
 
 %build
-CFLAGS="$RPM_OPT_FLAGS"
-perl Makefile.PL INSTALLDIRS=vendor
-%make 
-%make test
+%{__perl} Makefile.PL INSTALLDIRS=vendor
+%make CFLAGS="%optflags"
+
+%check
+make test
 
 %install
-[ "$RPM_BUILD_ROOT" != "/" ] && rm -rf $RPM_BUILD_ROOT
-%{makeinstall}  PREFIX=$RPM_BUILD_ROOT%{_prefix} DESTDIR=$RPM_BUILD_ROOT
-#%makeinstall_std
-find $RPM_BUILD_ROOT -name "perllocal.pod" \
--o -name ".packlist"                    \
--o -name "*.bs"                         \
-|xargs -i rm -f {}
-find $RPM_BUILD_ROOT%{_prefix} -type d -depth -exec rmdir {} \; 2>/dev/null
+rm -rf %buildroot
+%makeinstall_std
 
 %clean
-[ "$RPM_BUILD_ROOT" != "/" ] && rm -rf $RPM_BUILD_ROOT
+rm -rf %buildroot
 
 %files
 %defattr(-,root,root)
