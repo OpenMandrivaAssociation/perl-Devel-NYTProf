@@ -1,5 +1,5 @@
 %define module    Devel-NYTProf
-%define version   2.07
+%define version   2.08
 %define release   %mkrel 1
 
 Name:       perl-%{module}
