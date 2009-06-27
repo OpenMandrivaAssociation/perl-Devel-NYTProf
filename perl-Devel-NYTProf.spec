@@ -1,16 +1,16 @@
-%define module    Devel-NYTProf
-%define version   2.09
-%define release   %mkrel 1
+%define upstream_name  	    Devel-NYTProf
+%define upstream_version    2.10
 
-Name:       perl-%{module}
-Version:    %{version}
-Release:    %{release}
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
 Summary:    Powerful feature-rich perl source code profiler
 Group:      Development/Perl
 License:    Artistic
-Url:        http://search.cpan.org/dist/%{module}
-Source:     http://www.cpan.org/modules/by-module/Devel/%{module}-%{version}.tar.gz
+Url:        http://search.cpan.org/dist/%{upstream_name}
+Source:     http://www.cpan.org/modules/by-module/Devel/%{upstream_name}-%{upstream_version}.tar.gz
 BuildRequires:	perl-devel
+BuildRequires:	perl(Test::More) >= 0.88
 BuildRoot:     %{_tmppath}/%{name}-%{version}
 
 %description
@@ -38,7 +38,7 @@ NYTProf is effectively two profilers in one: a statement profiler, and a
 subroutine profiler.
 
 %prep
-%setup -q -n %{module}-%{version} 
+%setup -q -n %{upstream_name}-%{upstream_version} 
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
