@@ -1,9 +1,9 @@
 %define upstream_name  	    Devel-NYTProf
-%define upstream_version 4.04
+%define upstream_version 4.05
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 2
+Release:    %mkrel 1
 Summary:    Powerful feature-rich perl source code profiler
 Group:      Development/Perl
 License:    Artistic
