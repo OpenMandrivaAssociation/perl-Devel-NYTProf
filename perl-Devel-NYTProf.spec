@@ -1,5 +1,5 @@
 %define upstream_name  	    Devel-NYTProf
-%define upstream_version 4.05
+%define upstream_version 4.06
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
