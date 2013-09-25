@@ -1,15 +1,16 @@
 %define upstream_name  	    Devel-NYTProf
-%define upstream_version 4.06
+%define upstream_version 5.05
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:	3
+Release:	1
 Summary:    Powerful feature-rich perl source code profiler
 Group:      Development/Perl
 License:    Artistic
 Url:        http://search.cpan.org/dist/%{upstream_name}
-Source:     http://www.cpan.org/modules/by-module/Devel/%{upstream_name}-%{upstream_version}.tar.gz
+Source:     http://www.cpan.org/modules/by-module/Devel/Devel-NYTProf-%{upstream_version}.tar.gz
 BuildRequires:	perl-devel
+BuildRequires: perl(Test::Differences)
 BuildRequires:	perl(Test::More) >= 0.88
 BuildRoot:     %{_tmppath}/%{name}-%{version}
 
@@ -56,7 +57,7 @@ rm -rf %buildroot
 
 %files
 %defattr(-,root,root)
-%doc bin/nytprofhtml Changes INSTALL README
+%doc bin/nytprofhtml Changes INSTALL 
 %{_bindir}/*
 %{_mandir}/*/*
 %{perl_vendorarch}/Devel
@@ -123,3 +124,4 @@ rm -rf %buildroot
 
 * Thu Oct 09 2008 Thierry Vignaud <tvignaud@mandriva.com> 2.05-1mdv2009.1
 - Initial build.
+
