@@ -1,5 +1,5 @@
 %define upstream_name  	    Devel-NYTProf
-%define upstream_version 5.05
+%define upstream_version 5.06
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
@@ -12,7 +12,6 @@ Source:     http://www.cpan.org/modules/by-module/Devel/Devel-NYTProf-%{upstream
 BuildRequires:	perl-devel
 BuildRequires: perl(Test::Differences)
 BuildRequires:	perl(Test::More) >= 0.88
-BuildRoot:     %{_tmppath}/%{name}-%{version}
 
 %description
 Devel::NYTProf is a powerful feature-rich perl source code profiler.
@@ -49,14 +48,11 @@ subroutine profiler.
 make test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
 %clean
-rm -rf %buildroot
 
 %files
-%defattr(-,root,root)
 %doc bin/nytprofhtml Changes INSTALL 
 %{_bindir}/*
 %{_mandir}/*/*
@@ -124,4 +120,5 @@ rm -rf %buildroot
 
 * Thu Oct 09 2008 Thierry Vignaud <tvignaud@mandriva.com> 2.05-1mdv2009.1
 - Initial build.
+
 
