@@ -3,7 +3,7 @@
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:	1
+Release:	2
 Summary:    Powerful feature-rich perl source code profiler
 Group:      Development/Perl
 License:    Artistic
