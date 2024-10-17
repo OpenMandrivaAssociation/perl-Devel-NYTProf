@@ -7,7 +7,7 @@ Release:	3
 Summary:    Powerful feature-rich perl source code profiler
 Group:      Development/Perl
 License:    Artistic
-Url:        http://search.cpan.org/dist/%{upstream_name}
+Url:        https://search.cpan.org/dist/%{upstream_name}
 Source:     http://www.cpan.org/modules/by-module/Devel/Devel-NYTProf-%{upstream_version}.tar.gz
 BuildRequires:	perl-devel
 BuildRequires: perl(Test::Differences)
