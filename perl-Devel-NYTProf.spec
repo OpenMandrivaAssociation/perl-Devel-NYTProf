@@ -9,6 +9,7 @@ Group:      Development/Perl
 License:    Artistic
 Url:        https://search.cpan.org/dist/%{upstream_name}
 Source:     http://www.cpan.org/modules/by-module/Devel/Devel-NYTProf-%{upstream_version}.tar.gz
+BuildRequires:	make
 BuildRequires:	perl-devel
 BuildRequires: perl(Test::Differences)
 BuildRequires:	perl(Test::More) >= 0.88
